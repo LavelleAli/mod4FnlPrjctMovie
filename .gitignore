@@ -1,0 +1,6 @@
+.DS_Store
+Assets/.DS_Store
+node_modules/
+.vscode/
+*.log
+__pycache__/
