@@ -14,10 +14,7 @@
   </head>
 
   <body class="background__img">
-    <div id="loadingOverlay" class="loading-overlay hidden">
-      <div class="spinner"></div>
-      <p class="loading-text">Loading movies...</p>
-    </div>
+
     <!--Section: Navigation -->
     <section id="nav">
       <div class="container">
@@ -38,7 +35,7 @@
                 </a>
               </li>
               <li class="nav__item">
-                <a class="nav__link brow__link home__btn" href="#main">
+                <a class="home__btn nav__link brow__link" href="#main">
                   <span class="colored__words--white">
                     <i
                       class="fa-solid fa-eye fa-bounce"
@@ -47,25 +44,7 @@
                     Browse Movies
                   </span>
                 </a>
-              </li>
-
-              <!-- orginal search bar -->
-
-              <!-- <li class="nav__item">
-                <div class="search__wrapper nav__link home__btn">
-                  <label for="movieSearch">
-                    <span class="colored__words--white">
-                      <i class="fa-notdog fa-solid fa-magnifying-glass fa-bounce" style="color: rgb(255, 231, 145);"></i>
-                      Search Movies:
-                    </span>
-                  </label>
-                  <input class="search__movie--input" type="text" id="movieSearch" placeholder=" search for movies"  onchange="onSearchChange(event)">     
-                </div>
-              </li> -->
-
-              <!-- end original search bar -->
-
-              <!-- Test 002 -->
+              </li>              
               <li class="nav__item">
                 <div class="search__wrapper">
                   <label class="nav__link nav__label" for="movieSearchTerm">
@@ -97,8 +76,7 @@
                     autocomplete="off"
                   />
                 </div>
-              </li>
-              <!-- End Test 002 -->
+              </li>              
             </ul>
           </div>
         </div>
