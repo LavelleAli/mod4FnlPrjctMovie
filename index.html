@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Module 4 Final Project</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="https://kit.fontawesome.com/966c33780b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/966c33780b.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="newScript.js"></script>
     <script defer src="script.js"></script>
   </head>
-  
+
   <body class="background__img">
-    
+    <div id="loadingOverlay" class="loading-overlay hidden">
+      <div class="spinner"></div>
+      <p class="loading-text">Loading movies...</p>
+    </div>
     <!--Section: Navigation -->
     <section id="nav">
       <div class="container">
@@ -18,66 +25,117 @@
           <div class="nav__box">
             <ul class="nav__list">
               <li class="nav__item">
-                <a class="nav__link home__link" href="index.html"> 
+                <a class="nav__link home__link" href="index.html">
                   <button class="home__btn nav__link">
                     <span class="colored__words--white">
-                    <i class="fa-solid fa-house fa-bounce" style="color: rgb(255, 231, 145);"></i>
-                    Home
+                      <i
+                        class="fa-solid fa-house fa-bounce"
+                        style="color: rgb(255, 231, 145)"
+                      ></i>
+                      Home
                     </span>
                   </button>
                 </a>
               </li>
               <li class="nav__item">
                 <a class="nav__link brow__link home__btn" href="#main">
-                  <i class="fa-solid fa-eye fa-bounce" style="color: rgb(255, 231, 145);"></i>
                   <span class="colored__words--white">
+                    <i
+                      class="fa-solid fa-eye fa-bounce"
+                      style="color: rgb(255, 231, 145)"
+                    ></i>
                     Browse Movies
                   </span>
-                </a> <!--bring to movies section-->
+                </a>
               </li>
-              <li class="nav__item">
+
+              <!-- orginal search bar -->
+
+              <!-- <li class="nav__item">
                 <div class="search__wrapper nav__link home__btn">
-                  <i class="fa-notdog fa-solid fa-magnifying-glass fa-bounce" style="color: rgb(255, 231, 145);"></i>
-                  <label for="movieSearch"><span class="colored__words--white">Search Movies:</span></label>
+                  <label for="movieSearch">
+                    <span class="colored__words--white">
+                      <i class="fa-notdog fa-solid fa-magnifying-glass fa-bounce" style="color: rgb(255, 231, 145);"></i>
+                      Search Movies:
+                    </span>
+                  </label>
                   <input class="search__movie--input" type="text" id="movieSearch" placeholder=" search for movies"  onchange="onSearchChange(event)">     
                 </div>
+              </li> -->
+
+              <!-- end original search bar -->
+
+              <!-- Test 002 -->
+              <li class="nav__item">
+                <div class="search__wrapper">
+                  <label class="nav__link nav__label" for="movieSearchTerm">
+                    <span class="colored__words--white">
+                      <i
+                        class="fa-notdog fa-solid fa-magnifying-glass fa-bounce"
+                        style="color: rgb(255, 231, 145)"
+                      ></i>
+                      Search Movies:
+                    </span>
+                  </label>
+                  <select id="filterType" class="nav__label nav__link">
+                    <option value="title" selected>Title</option>
+                    <option value="year">Year</option>
+                    <option value="imdbID">imdbID</option>
+                  </select>
+                  <input
+                    class="search__movie--input"
+                    type="number"
+                    id="movieSearchYear"
+                    placeholder="Year (optional)"
+                    autocomplete="off"
+                  />
+                  <input
+                    class="search__movie--input"
+                    type="text"
+                    id="movieSearchTerm"
+                    placeholder="Type a title, year, or imdbID"
+                    autocomplete="off"
+                  />
+                </div>
               </li>
-              
+              <!-- End Test 002 -->
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section: Main -->  
+    <!-- Section: Main -->
     <section id="main">
       <div class="container">
         <div class="row">
           <div class="movie__list">
             <h1 class="movie__header">
-            <span class="colored__words--white">Featured Movies</span>
+              <span class="colored__words--white">Featured Movies</span>
             </h1>
-            <div class="movies">
-            </div>
+            <div class="movies"></div>
           </div>
         </div>
       </div>
     </section>
 
-<!-- Section: Footer -->
- <footer>
-  <div class="container">
-    <div class="row">
-      <div class="footer__media">
-        © Lavelle Ali 2026
-        <div class="footer__links">
-          <a href="#nav">
-            <i class="fa-notdog fa-solid fa-arrow-up fa-bounce" style="color: rgb(255, 231, 145);"></i>
-          </a>         
+    <!-- Section: Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="footer__media">
+            © Lavelle Ali 2026
+            <div class="footer__links">
+              <a href="#nav">
+                <i
+                  class="fa-notdog fa-solid fa-arrow-up fa-bounce"
+                  style="color: rgb(255, 231, 145)"
+                ></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
- </footer>
-</body>
+    </footer>
+  </body>
 </html>

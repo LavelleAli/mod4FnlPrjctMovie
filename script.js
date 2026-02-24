@@ -5,17 +5,20 @@
 
 
 const movieListEl = document.querySelector('.movies');
+const inputEl = document.querySelector('.search__movie--input');
 
 // This function translates the API to HTML and puts it on the page
 async function getAPI() {
     const getMovies = await fetch('https://www.omdbapi.com/?apikey=e8773e4&s=Avengers')
     const movieData =await getMovies.json();
     movieListEl.innerHTML = movieData.Search.map((movie) =>  movieInfo(movie)).join("")
+    // console.log(getMovies)
     // console.log(movieData)
 }
 getAPI();
 
-// This is a function for the search bar
+
+// This is a function for the original search bar
 async function onSearchChange(event) {
     const movieID = event.target.value
     
@@ -25,8 +28,6 @@ async function onSearchChange(event) {
   
     movieListEl.innerHTML = movieItemData.Search.map((movie) => movieInfo(movie)).join("")
 }
-
-
 
 // This function operates within the MovieInfo function for the onclick and targets a new page.
 function showMovie(imdbID) {
