@@ -1,24 +1,14 @@
-const loadingOverlay = document.querySelector("#loadingOverlay");
-
-function showLoader() {
-  loadingOverlay.classList.remove("hidden");
-}
-
-function hideLoader() {
-  loadingOverlay.classList.add("hidden");
-}
-
-// OMDb API Key
+ey
 const API_KEY = "e8773e4";
 
 const movieListEl = document.querySelector(".movies");
 
-// New UI elements
+
 const filterTypeEl = document.querySelector("#filterType");
 const searchTermEl = document.querySelector("#movieSearchTerm");
 const searchYearEl = document.querySelector("#movieSearchYear");
 
-// ---------- Helpers ----------
+
 function escapeHTML(str = "") {
   return str
     .replaceAll("&", "&amp;")
@@ -51,19 +41,18 @@ function renderMessage(msg) {
 }
 
 function renderFromOmdbResponse(data) {
-  // Search results (Title or Title+Year)
+
   if (Array.isArray(data.Search)) {
     movieListEl.innerHTML = data.Search.map(movieCard).join("");
     return;
   }
 
-  // Single result (imdbID lookup)
   if (data && data.imdbID) {
     movieListEl.innerHTML = movieCard(data);
     return;
   }
 
-  // Errors or empty
+  
   if (data && data.Error) {
     renderMessage(data.Error);
     return;
@@ -72,26 +61,26 @@ function renderFromOmdbResponse(data) {
   renderMessage("No results found.");
 }
 
-// ---------- Existing behavior ----------
+
 function showMovie(imdbID) {
   localStorage.setItem("movieTag", imdbID);
   // window.location.href = `${window.location.origin}/movie.html`
 }
 
-// ---------- Fetch ----------
+
 async function fetchOmdb(url) {
   const res = await fetch(url);
   return await res.json();
 }
 
-// Featured movies on load
+
 async function loadFeatured() {
   const data = await fetchOmdb(`https://www.omdbapi.com/?apikey=${API_KEY}&s=Avengers`);
   renderFromOmdbResponse(data);
 }
 loadFeatured();
 
-// ---------- Filtered Search ----------
+
 let debounceTimer = null;
 
 function updateYearInputVisibility() {
@@ -111,7 +100,7 @@ async function runFilteredSearch() {
   const term = searchTermEl.value.trim();
   const year = searchYearEl.value.trim();
 
-  // If input is empty, bring back featured movies
+  
   if (!term) {
     await loadFeatured();
     return;
@@ -127,7 +116,7 @@ async function runFilteredSearch() {
     }
 
     if (mode === "year") {
-      // OMDb "year" filtering works best when combined with a title keyword
+      
       if (!year) {
         renderMessage("Type a year to filter, for example 2019.");
         return;
@@ -157,7 +146,7 @@ async function runFilteredSearch() {
   }
 }
 
-// Event listeners
+
 filterTypeEl.addEventListener("change", () => {
   updateYearInputVisibility();
   runFilteredSearch();
@@ -173,5 +162,5 @@ searchYearEl.addEventListener("input", () => {
   debounceTimer = setTimeout(runFilteredSearch, 350);
 });
 
-// Initialize UI state
+
 updateYearInputVisibility();
