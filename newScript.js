@@ -1,4 +1,3 @@
-ey
 const API_KEY = "e8773e4";
 
 const movieListEl = document.querySelector(".movies");
